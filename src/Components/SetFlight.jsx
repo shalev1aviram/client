@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { REGISTER_FLY_URL } from '../Routes/urls'
 import { getAxiosStatus } from '../utils/utils'
 
-const SetFlight = ({ display, navTo }) => {
+const SetFlight = ({ display }) => {
     // **Context and Form State**
     const { flyData, setflyData } = useContext(flyContext)
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm({
@@ -26,7 +26,7 @@ const SetFlight = ({ display, navTo }) => {
 
         try {
             await axios.post(REGISTER_FLY_URL, data)
-            nav(`/${navTo}`) //Navigate each page (depends) on success
+            nav('visuals') //Navigate visuals page on success
         } catch (error) {
             if (getAxiosStatus(error) == 409) { 
                 setError("error", { message: "Altitude is already exist" })

@@ -58,7 +58,7 @@ const Text = () => {
         <div className='select-none'>
             <Header />
             <div id='setFlightId' className='absolute backdrop-blur-sm bg-opacity-65 pt-6 w-full h-full' style={{ visibility: 'hidden' }}>
-                <SetFlight display={'none'} navTo={'visual'} />
+                <SetFlight display={'none'} />
             </div>
             <div id='plusOrMin' onClick={visuallsHidden} className='mb-12 pl-1 absolute'>
                 <button onClick={clicked} className='border border-black bg-slate-700 text-white rounded-b-2xl w-20 px-5 py-2 text-xl'>{buttonText}</button>

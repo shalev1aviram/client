@@ -67,7 +67,7 @@ const Home = () => {
 
             <div id='setFlightId' className='absolute bg-slate-200 bg-opacity-80 pt-6 w-full h-full' style={{ visibility: 'hidden' }}>
                 <div>
-                    <SetFlight display={'none'} navTo={'text'} />
+                    <SetFlight display={'none'} />
                 </div>
             </div>
 
