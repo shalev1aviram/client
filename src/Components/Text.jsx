@@ -6,10 +6,15 @@ import Header from './Header';
 
 const Text = () => {
 
+    // **Access the Fly Data from Context**
     const { flyData } = useContext(flyContext);
+
+    // **State Variables for Displaying Fly Data**
     const [Altitude, setAltitude] = useState(flyData.Altitude);
     const [sky, setSky] = useState(flyData.ADI);
     const [rotateArrow, setRotateArrow] = useState(flyData.His);
+
+    // **Update State Variables on Fly Data Changes**
     useEffect(() => {
         setAltitude(flyData.Altitude);
     }, [flyData.Altitude]);
@@ -23,33 +28,37 @@ const Text = () => {
     }, [flyData.HIS]);
     console.log("sky: ", sky);
 
-    //  החלק של הלהופיע ולא להופיע- יוז אפקט בסוגריים מרובעות ריק כדי שהאלמנט יטרנדר בכל פעם
+    // **State Variables for SetFlight Component Visibility**
     const [showOrNotSF, setShowOrNotSF] = useState(null);
     const [buttonText, setButtonText] = useState('set');
 
+    // **Initialize showOrNotSF based on Element ID**
     useEffect(() => {
         setShowOrNotSF(document.getElementById('setFlightId'));
     }, []);
 
+    // **Toggle SetFlight Visibility and Button Text**
     const clicked = () => {
         if (showOrNotSF) {
             showOrNotSF.style.visibility = showOrNotSF.style.visibility === 'hidden' ? 'visible' : 'hidden';
             setButtonText(buttonText === 'set' ? '-' : 'set');
         }
     };
-    const [hiddenOrFlex, sethHiddenOrFlex] = useState('flex');
 
+    // **State Variable for Visuals Display (flex or hidden)**
+    const [hiddenOrFlex, setHiddenOrFlex] = useState('flex');
 
+    // **Get References to SetFlight and Visuals Elements**
     const setFlightComp = document.getElementById('setFlightId');
     const visuallsHidden = () => {
-        setFlightComp.style.visibility === 'visible' ? sethHiddenOrFlex('hidden') : sethHiddenOrFlex('flex');
+        setFlightComp.style.visibility === 'visible' ? setHiddenOrFlex('hidden') : setHiddenOrFlex('flex');
     }
 
     return (
         <div className='select-none'>
             <Header />
             <div id='setFlightId' className='absolute backdrop-blur-sm bg-opacity-65 pt-6 w-full h-full' style={{ visibility: 'hidden' }}>
-                <SetFlight display={'none'} />
+                <SetFlight display={'none'} navTo={'visual'} />
             </div>
             <div id='plusOrMin' onClick={visuallsHidden} className='mb-12 pl-1 absolute'>
                 <button onClick={clicked} className='border border-black bg-slate-700 text-white rounded-b-2xl w-20 px-5 py-2 text-xl'>{buttonText}</button>
@@ -60,23 +69,23 @@ const Text = () => {
                 <div className='Altitud boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
                     <div className='flex flex-col mt-[30%] googleFont1'>
                         ALTITUD:
-                        <p>{Altitude}</p>
+                        <p className='mt-2'>{Altitude}</p>
                     </div>
                 </div>
 
                 {/* His */}
                 <div className='HIS boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
-                <div className='flex flex-col mt-[30%] googleFont1'>
+                    <div className='flex flex-col mt-[30%] googleFont1'>
                         HIS:
-                        <p>{rotateArrow}</p>
+                        <p className='mt-2'>{rotateArrow}</p>
                     </div>
                 </div>
 
                 {/* ADI */}
                 <div className='ADI boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
-                <div className='flex flex-col mt-[30%] googleFont1'>
+                    <div className='flex flex-col mt-[30%] googleFont1'>
                         ADI:
-                        <p>{sky}</p>
+                        <p className='mt-2'>{sky}</p>
                     </div>
                 </div>
             </div>

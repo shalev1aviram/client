@@ -7,27 +7,32 @@ import { useNavigate } from 'react-router-dom'
 import { REGISTER_FLY_URL } from '../Routes/urls'
 import { getAxiosStatus } from '../utils/utils'
 
-const SetFlight = ({display}) => {
+const SetFlight = ({ display, navTo }) => {
+    // **Context and Form State**
     const { flyData, setflyData } = useContext(flyContext)
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm({
         mode: "onSubmit",
         reValidateMode: "onChange"
     });
 
+    // **Navigation and Error Handling**
     const nav = useNavigate()
     const signup = async (data) => {
         const detailsUpdate = data
         console.log("update: ", detailsUpdate);
+
+            // Update fly data in context
         setflyData({ ...flyData, ...detailsUpdate })
+
         try {
             await axios.post(REGISTER_FLY_URL, data)
-            nav("/visual")
+            nav(`/${navTo}`) //Navigate each page (depends) on success
         } catch (error) {
-            if (getAxiosStatus(error) == 409) {
+            if (getAxiosStatus(error) == 409) { 
                 setError("error", { message: "Altitude is already exist" })
             }
             else {
-                console.log(getAxiosStatus(error) + ": ", error);
+                console.log(getAxiosStatus(error) + ": ", error); // Log error details
                 setError("error", { message: "network error" })
             }
         }
@@ -36,11 +41,11 @@ const SetFlight = ({display}) => {
 
     return (
         <div className='select-none'>
-                <img src="src/images/movingBg.png" alt="plane1" width={200} className='airplane absolute mt-60' />
-                <img src="src/images/movingBg.png" alt="plane2" width={70} className='airplane3 absolute mt-32' />
-                <img src="src/images/movingBg.png" alt="plane3" width={300} className='airplane2 absolute mt-80' />
+            <img src="src/images/movingBg.png" alt="plane1" width={200} className='airplane absolute mt-60' />
+            <img src="src/images/movingBg.png" alt="plane2" width={70} className='airplane3 absolute mt-32' />
+            <img src="src/images/movingBg.png" alt="plane3" width={300} className='airplane2 absolute mt-80' />
 
-        <div className='invisible h-20' style={{display:`${display}`}}></div>
+            <div className='invisible h-20' style={{ display: `${display}` }}></div>
             <Loading on={isSubmitting} />
             <div className="max-w-md mx-auto select-none mt-8 bg-slate-500 bg-[url(src/images/plnBg3.jpg)] bg-blend-lighten bg-cover bg-center brightness-100 rounded-lg">
                 <form onSubmit={handleSubmit(signup)} className=" shadow-md rounded px-8 pt-6 pb-3 mb-4 items-center">
@@ -96,8 +101,8 @@ const SetFlight = ({display}) => {
                         />
                     </div>
                     <div className='min-h-9 text-center mb-0'>{errors.ADI && <span className='text-xs font-medium backdrop-brightness-125 text-black'>{errors.ADI.message}</span>}</div>
-                
-                    <div  className='flex justify-around'>
+
+                    <div className='flex justify-around'>
                         <div>
                             <p className='p-2 text-2xl text-gray-700 googleFont1'>
                                 SET  A (:<br /> FLIGHT

@@ -50,9 +50,6 @@ const Home = () => {
         }
     };
 
-    console.log("test");
-    console.log("test2");
-
     // Get references to SetFlight and Visuals elements
     const setFlightComp = document.getElementById('setFlightId');
     const Visuals = document.getElementById('allVisuals');
@@ -70,7 +67,7 @@ const Home = () => {
 
             <div id='setFlightId' className='absolute bg-slate-200 bg-opacity-80 pt-6 w-full h-full' style={{ visibility: 'hidden' }}>
                 <div>
-                    <SetFlight display={'none'} />
+                    <SetFlight display={'none'} navTo={'text'} />
                 </div>
             </div>
 
