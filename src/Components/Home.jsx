@@ -7,11 +7,15 @@ import { Link } from 'react-router-dom';
 'use client';
 
 const Home = () => {
-
+    // Get fly data from context
     const { flyData } = useContext(flyContext);
+
+    // State variables for altitude, sky, and arrow rotation
     const [arrow, setArrow] = useState(130);
     const [sky, setSky] = useState(0);
     const [rotateArrow, setRotateArrow] = useState(0);
+
+    // Update altitude, sky, and rotateArrow based on flyData changes
     useEffect(() => {
         setArrow(flyData.Altitude);
     }, [flyData.Altitude]);
