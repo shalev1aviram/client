@@ -66,7 +66,7 @@ const Text = () => {
 
             <div id='allVisuals' className={`md:mt-28 ${hiddenOrFlex} lg:flex flex flex-wrap justify-around items-center`}>
                 {/* Altitud */}
-                <div className='Altitud boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
+                <div className='Altitud boxBetter onlyTextBox textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
                     <div className='flex flex-col mt-[30%] googleFont1'>
                         ALTITUD:
                         <p className='mt-2'>{Altitude}</p>
@@ -74,7 +74,7 @@ const Text = () => {
                 </div>
 
                 {/* His */}
-                <div className='HIS boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
+                <div className='HIS boxBetter onlyTextBox textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
                     <div className='flex flex-col mt-[30%] googleFont1'>
                         HIS:
                         <p className='mt-2'>{rotateArrow}</p>
@@ -82,7 +82,7 @@ const Text = () => {
                 </div>
 
                 {/* ADI */}
-                <div className='ADI boxBetter textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
+                <div className='ADI boxBetter onlyTextBox textBox  my-5 text-center h-[300px] w-[300px] rounded-[80px] border border-black'>
                     <div className='flex flex-col mt-[30%] googleFont1'>
                         ADI:
                         <p className='mt-2'>{sky}</p>

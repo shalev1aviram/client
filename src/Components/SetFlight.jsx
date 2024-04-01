@@ -17,7 +17,7 @@ const SetFlight = ({ display }) => {
 
     // **Navigation and Error Handling**
     const nav = useNavigate()
-    const signup = async (data) => {
+    const update = async (data) => {
         const detailsUpdate = data
         console.log("update: ", detailsUpdate);
 
@@ -26,7 +26,7 @@ const SetFlight = ({ display }) => {
 
         try {
             await axios.post(REGISTER_FLY_URL, data)
-            nav('visual') //Navigate visuals page on success
+            nav('/visual') //Navigate visuals page on success
         } catch (error) {
             if (getAxiosStatus(error) == 409) { 
                 setError("error", { message: "Altitude is already exist" })
@@ -48,7 +48,7 @@ const SetFlight = ({ display }) => {
             <div className='invisible h-20' style={{ display: `${display}` }}></div>
             <Loading on={isSubmitting} />
             <div className="max-w-md mx-auto select-none mt-8 bg-slate-500 bg-[url(src/images/plnBg3.jpg)] bg-blend-lighten bg-cover bg-center brightness-100 rounded-lg">
-                <form onSubmit={handleSubmit(signup)} className=" shadow-md rounded px-8 pt-6 pb-3 mb-4 items-center">
+                <form onSubmit={handleSubmit(update)} className=" shadow-md rounded px-8 pt-6 pb-3 mb-4 items-center">
                     {/* <div className='w-full text-center'><h1 className='text-black font-medium text-3xl pb-8'>Start Fly</h1></div> */}
                     <div style={{ boxShadow: '5px 5px 29px 2px rgba(0,0,0,0.55)' }} className="mb-2 pb-2 border-b-2 border-black shadow-md p-1 pt-3 rounded  backdrop-blur-xl bg-gray-300">
                         <label className="ps-1 block text-gray-700 text-sm font-bold  border-b border-gray-700 w-fit">
