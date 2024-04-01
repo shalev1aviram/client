@@ -50,6 +50,8 @@ const Home = () => {
         }
     };
 
+    console.log("test");
+
     // Get references to SetFlight and Visuals elements
     const setFlightComp = document.getElementById('setFlightId');
     const Visuals = document.getElementById('allVisuals');
