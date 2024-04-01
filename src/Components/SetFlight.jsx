@@ -26,7 +26,7 @@ const SetFlight = ({ display }) => {
 
         try {
             await axios.post(REGISTER_FLY_URL, data)
-            nav('visuals') //Navigate visuals page on success
+            nav('visual') //Navigate visuals page on success
         } catch (error) {
             if (getAxiosStatus(error) == 409) { 
                 setError("error", { message: "Altitude is already exist" })
