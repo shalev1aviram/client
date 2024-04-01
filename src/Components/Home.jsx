@@ -30,6 +30,7 @@ const Home = () => {
 
     console.log("sky: ", sky);
 
+    // Classes for arrow positioning based on altitude
     const arrowClass = arrow <= 333 ? 'mb-4' : arrow <= 666 ? 'mb-3' : arrow <= 1000 ? 'mb-1' : arrow <= 1333 ? 'mb-0' : arrow <= 1666 ? 'mt-[5px]' : arrow <= 2000 ? 'mt-[10px]' : arrow <= 2333 ? 'mt-[15px]' : arrow <= 2666 ? 'mt-[20px]' : 'mt-[25px]';
 
     //  החלק של הלהופיע ולא להופיע- יוז אפקט בסוגריים מרובעות ריק כדי שהאלמנט יטרנדר בכל פעם
